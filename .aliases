@@ -1,0 +1,73 @@
+#################
+# Package Aliases
+#################
+alias y="yaourt --noconfirm"
+alias i="yaourt -Sy --noconfirm"
+alias u="yaourt -Syu --aur --noconfirm"
+alias r="yaourt -Rs --noconfirm"
+
+
+##################
+# Anaconda Aliases
+##################
+function conda_on() {
+    conda_env=${1:-workspace}
+    echo "Activating $conda_env..."
+    source /opt/anaconda/bin/activate
+}
+function conda_off() {
+    conda_env=${1:-workspace}
+    echo "Deactivating $conda_env..."
+    source /opt/anaconda/bin/deactivate ${1:-workspace}
+}
+
+
+#############
+# NPM Aliases
+#############
+alias ni="npm i -g"
+alias nr="npm r -g"
+alias nu="npm up -g"
+
+
+##############
+# Yarn Aliases
+##############
+alias js="yarn"
+alias js0="yarn init"
+alias jsi="yarn add"
+alias jsid="yarn add -D"
+alias jsr="yarn remove"
+
+
+######################
+# React Native Aliases
+######################
+alias rn="react-native "
+alias rna="react-native run-android"
+alias rnc="kill -9 \$(sudo lsof -i :8081 | awk -F ' ' '{ print $2 }' | uniq | tail -n 2)"
+
+
+
+##############
+# Make Aliases
+##############
+alias mk="make"
+
+
+################
+# Docker Aliases
+################
+alias dk="docker"
+alias dkc="docker-compose"
+alias dkm="docker-machine"
+
+
+################
+# Others Aliases
+################
+alias rmf="rm -rf"
+alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
+alias ak="kill -9"
+alias code="code || code-insiders"
+alias emulator="$ANDROID_HOME/tools/emulator" 
