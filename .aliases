@@ -45,6 +45,7 @@ alias jsr="yarn remove"
 ######################
 alias rn="react-native "
 alias rna="react-native run-android"
+alias rni="react-native run-ios"
 alias rnc="kill -9 \$(sudo lsof -i :8081 | awk -F ' ' '{ print $2 }' | uniq | tail -n 2)"
 
 
@@ -70,4 +71,4 @@ alias rmf="rm -rf"
 alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
 alias ak="kill -9"
 alias code="code || code-insiders"
-alias emulator="$ANDROID_HOME/tools/emulator" 
+alias emulator="$ANDROID_HOME/tools/emulator"
