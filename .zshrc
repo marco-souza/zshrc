@@ -1,5 +1,5 @@
 # a If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+  export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
@@ -122,6 +122,10 @@ export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/'
 ## Spark
 SPARK_HOME="/opt/apache-spark"
 export PATH=$(echo "$PATH:$SPARK_HOME/bin")
+
+## GO
+export GOPATH=$HOME/.go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 ## SDKMAN
 #. "$HOME/.sdkman/bin/sdkman-init.sh"
