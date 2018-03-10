@@ -72,3 +72,9 @@ alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
 alias ak="kill -9"
 alias ci="code-insiders"
 alias emulator="$ANDROID_HOME/tools/emulator"
+
+################
+# MAC OS
+################
+alias bi="brew install"
+alias bci="brew cask install"
