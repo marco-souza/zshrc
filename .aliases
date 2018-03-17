@@ -69,7 +69,6 @@ alias dkm="docker-machine"
 ################
 alias rmf="rm -rf"
 alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
-alias ak="kill -9"
 alias ci="code-insiders"
 alias emulator="$ANDROID_HOME/tools/emulator"
 
@@ -78,3 +77,14 @@ alias emulator="$ANDROID_HOME/tools/emulator"
 ################
 alias bi="brew install"
 alias bci="brew cask install"
+
+################
+# Utils
+################
+function tid() {
+    # conda_env=${1:-workspace}
+    ps -ax | grep -i $1 | grep -v 0:00.00 | awk '{ print $1 }' | uniq
+}
+function ak() {
+    kill -9 $(tid $1)
+}
