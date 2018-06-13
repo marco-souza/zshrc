@@ -2,8 +2,8 @@
 
 ## How to use
 
-All configurations are created for `zsh`. Since you have it installed, clone this repo and execute:
+All configurations are created for `zsh`. Install it first, clone this repo, open this folder in a terminal and execute the following code:
 
- `. <PATH-TO>/zshrc/apply.sh` or `source <PATH-TO>/zshrc/apply.sh`
+ `. ./apply.sh` or `source ./apply.sh`
 
-And then open `zsh` again, if you are not already using it.
+And then execute `zsh` again, if you are not already using it.
