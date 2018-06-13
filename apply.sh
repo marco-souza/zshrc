@@ -2,6 +2,15 @@
 echo "Setting up zsh"
 # Install configs
 cp -r .aliases .neovimrc .zsh-update .zshrc $HOME
+echo " • Installing configurations..."
 # Clone oh-my-zsh
-git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+dest=$HOME/.oh-my-zsh
+if [ ! -e $dest ];
+then
+  echo " • Cloning Oh-My-Zsh in $dest..."
+  git clone https://github.com/robbyrussell/oh-my-zsh.git $dest
+fi
+echo " • Applying configs to current section..."
+source ~/.{aliases,neovimrc,zsh-update,zshrc}
+echo " • Done!"
 echo "Done "
