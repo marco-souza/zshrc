@@ -76,6 +76,7 @@ alias emulator="$ANDROID_HOME/tools/emulator"
 # MAC OS
 ################
 alias bi="brew install"
+alias bu="brew upgrade && brew cask upgrade"
 alias bci="brew cask install"
 
 ################
