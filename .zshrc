@@ -139,6 +139,14 @@ export PATH=$(echo "$PATH:$ANDROID_HOME/platform-tools")
 ## Yarn
 export PATH=$(echo "$PATH:$HOME/.config/yarn/global/node_modules/.bin")
 
+# ==============
+# Python Setup
+# ==============
+
+## Python path
+PYTHON3_PATH="/usr/local/lib/python3.7/site-packages"
+PATH="$PATH:$PYTHON3_PATH"
+
 ## Anaconda
 export PATH="$PATH:/opt/anaconda/bin"
 

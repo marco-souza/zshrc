@@ -49,6 +49,12 @@ alias rni="react-native run-ios"
 alias rnc="kill -9 \$(sudo lsof -i :8081 | awk -F ' ' '{ print $2 }' | uniq | tail -n 2)"
 
 
+##############
+# Python Aliases
+##############
+alias pip="pip3"
+alias pyenv="python3.7 -m venv"
+
 
 ##############
 # Make Aliases
@@ -89,3 +95,6 @@ function tid() {
 function ak() {
     kill -9 $(tid $1)
 }
+ALIAS_FILE="~/.aliases"
+alias edit_als="vim $ALIAS_FILE; source $ALIAS_FILE;"
+
