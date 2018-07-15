@@ -52,6 +52,7 @@ alias rnc="kill -9 \$(sudo lsof -i :8081 | awk -F ' ' '{ print $2 }' | uniq | ta
 ##############
 # Python Aliases
 ##############
+alias list_envs="ls $ENVS"
 alias pip="pip3"
 alias pyenv="python3.7 -m venv"
 
@@ -96,5 +97,7 @@ function ak() {
     kill -9 $(tid $1)
 }
 ALIAS_FILE="~/.aliases"
+ZSHRC="~/.zshrc"
 alias edit_als="vim $ALIAS_FILE; source $ALIAS_FILE;"
+alias edit_zsh="vim $ZSHRC; source $ZSHRC;"
 
