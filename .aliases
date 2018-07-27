@@ -1,10 +1,10 @@
 #################
 # Package Aliases
 #################
-alias y="yaourt --noconfirm"
-alias i="yaourt -Sy --noconfirm"
-alias u="yaourt -Syu --aur --noconfirm"
-alias r="yaourt -Rs --noconfirm"
+alias i="brew install"
+alias u="brew upgrade; brew cask upgrade"
+alias r="brew uninstall"
+alias ci="brew cask install"
 
 
 ##################
@@ -79,12 +79,6 @@ alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
 alias ci="code-insiders"
 alias emulator="$ANDROID_HOME/tools/emulator"
 
-################
-# MAC OS
-################
-alias bi="brew install"
-alias bu="brew upgrade && brew cask upgrade"
-alias bci="brew cask install"
 
 ################
 # Utils
