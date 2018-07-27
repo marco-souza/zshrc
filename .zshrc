@@ -173,7 +173,7 @@
 # init: Python Setup
 # ===================
   ## Python paths
-  PYTHON3_PATH="/usr/local/lib/python3.7/site-packages"
+  PYTHON3_PATH="/usr/bin/python3/site-packages"
   ENVS="$HOME/.virtualenvs/"
   PATH="$PATH:$PYTHON3_PATH"
 
@@ -183,7 +183,7 @@
   ## Virtualenv Wrapper - Setup
   export VENV_WRAPPER="/usr/local/bin/virtualenvwrapper.sh"
   export PROJECT_HOME="$HOME/dev"
-  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
   source $VENV_WRAPPER
 # ===================
 # end: Python Setup
