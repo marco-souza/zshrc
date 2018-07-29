@@ -4,7 +4,7 @@
 alias i="brew install"
 alias u="brew upgrade; brew cask upgrade"
 alias r="brew uninstall"
-alias ci="brew cask install"
+alias ic="brew cask install"
 
 
 ##################
