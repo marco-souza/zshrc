@@ -23,6 +23,6 @@ echo " • Creating local npm folder..."
 make ~/.npm-global
 
 echo " • Install virtualenv as dependencies..."
-pip install virtualenv{,wrapper}
+sudo pip install virtualenv{,wrapper}
 
 echo " • Done!"
