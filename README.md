@@ -1,5 +1,11 @@
 # My default linux configurations
 
+## Dependencies
+
+- python + pip
+- ruby + rvm
+- node + npm
+
 ## How to use
 
 All configurations are created for `zsh`. Install it first, clone this repo, open this folder in a terminal and execute the following code:

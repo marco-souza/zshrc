@@ -1,8 +1,7 @@
 ALL: update apply
 
-update: ~/.aliases ~/.zshrc
-	cp {~,.}/.aliases
-	cp {~,.}/.zshrc
+update:
+	git pull
 
 apply: apply.sh
 	sh apply.sh

@@ -1,97 +1,142 @@
-#################
+# CD Aliases
+############
+    alias ..="cd .."
+    alias ...="cd ../.."
+
+
 # Package Aliases
 #################
-alias y="yaourt --noconfirm"
-alias i="yaourt -Sy --noconfirm"
-alias u="yaourt -Syu --aur --noconfirm"
-alias r="yaourt -Rs --noconfirm"
+    alias i="brew install"
+    alias ic="brew cask install"
+    alias u="brew upgrade; brew cask upgrade"
+    alias r="brew remove"
 
 
-##################
 # Anaconda Aliases
 ##################
-function conda_on() {
-    conda_env=${1:-workspace}
-    echo "Activating $conda_env..."
-    source /opt/anaconda/bin/activate
-}
-function conda_off() {
-    conda_env=${1:-workspace}
-    echo "Deactivating $conda_env..."
-    source /opt/anaconda/bin/deactivate ${1:-workspace}
-}
+    function conda_on() {
+        conda_env=${1:-workspace}
+        echo "Activating $conda_env..."
+        source /opt/anaconda/bin/activate
+    }
+    function conda_off() {
+        conda_env=${1:-workspace}
+        echo "Deactivating $conda_env..."
+        source /opt/anaconda/bin/deactivate ${1:-workspace}
+    }
 
 
-#############
 # NPM Aliases
 #############
-alias ni="npm i -g"
-alias nr="npm r -g"
-alias nu="npm up -g"
+    alias ni="npm i -g"
+    alias nr="npm r -g"
+    alias nu="npm up -g"
 
 
-##############
 # Yarn Aliases
 ##############
-alias js="yarn"
-alias js0="yarn init"
-alias jsi="yarn add"
-alias jsid="yarn add -D"
-alias jsr="yarn remove"
+    alias js="yarn"
+    alias js0="yarn init"
+    alias jsi="yarn add"
+    alias jsid="yarn add -D"
+    alias jsr="yarn remove"
 
 
-######################
 # React Native Aliases
 ######################
-alias rn="react-native "
-alias rna="react-native run-android"
-alias rni="react-native run-ios"
-alias rnc="kill -9 \$(sudo lsof -i :8081 | awk -F ' ' '{ print $2 }' | uniq | tail -n 2)"
+    alias rn="react-native "
+    alias rna="react-native run-android"
+    alias rni="react-native run-ios"
+    alias rnc="kill -9 \$(sudo lsof -i :8081 | awk -F ' ' '{ print $2 }' | uniq | tail -n 2)"
 
 
-##############
 # Python Aliases
 ##############
-alias list_envs="ls $ENVS"
-alias pip="pip3"
-alias pyenv="python3.7 -m venv"
+    alias list_envs="ls $ENVS"
+    alias pip="pip3"
+    alias pyenv="python3.7 -m venv"
 
 
-##############
 # Make Aliases
 ##############
-alias mk="make"
+    alias mk="make"
 
 
-################
 # Docker Aliases
 ################
-alias dk="docker"
-alias dkc="docker-compose"
-alias dkm="docker-machine"
+    alias dk="docker"
+    alias dkc="docker-compose"
+    alias dkm="docker-machine"
+    alias dks="docker stack"
+    alias dkps="docker container ps"
+    alias ctop="docker rm ctop; docker run --rm -ti \
+        --name=ctop \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        quay.io/vektorlab/ctop:latest"
 
 
-################
 # Others Aliases
 ################
-alias rmf="rm -rf"
-alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
-alias ci="code-insiders"
-alias emulator="$ANDROID_HOME/tools/emulator"
+    alias rmf="rm -rf"
+    alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
+    alias ci="code-insiders"
+    alias emulator="$ANDROID_HOME/tools/emulator"
 
 
+# Workspaces
 ################
+    function workin() {
+        case "$1" in
+            # GovPredict
+            gp)
+                # use docker machine
+                docker-machine start default
+                eval $(docker-machine env)
+                # use rvm env
+                rvm use 2.4.4@gov_congress
+
+                # go to folder
+                cd ~/dev/govpredict/gov_congress
+                ;;
+            # TremTec
+            tt)
+                cd ~/dev/tremtec
+                ;;
+        esac
+
+    }
+
+
 # Utils
 ################
-function tid() {
-    # conda_env=${1:-workspace}
-    ps -ax | grep -i $1 | grep -v 0:00.00 | awk '{ print $1 }' | uniq
-}
-function ak() {
-    kill -9 $(tid $1)
-}
-ALIAS_FILE="~/.aliases"
-ZSHRC="~/.zshrc"
-alias edit_als="vim $ALIAS_FILE; source $ALIAS_FILE;"
-alias edit_zsh="vim $ZSHRC; source $ZSHRC;"
+    # kill
+        function tid() {
+            # conda_env=${1:-workspace}
+            ps -ax | grep -i $1 | grep -v 0:00.00 | awk '{ print $1 }' | uniq
+        }
+        function ak() {
+            kill -9 $(tid $1)
+        }
 
+    # volume
+
+        function vol() {
+            pactl -- set-sink-volume 0 $1%
+        }
+
+        export VOLUME=100
+        function vu() {
+            vol +10
+        }
+        function vd() {
+            vol -10
+        }
+
+        function tvol {
+            if [ $VOLUME = 100 ]; then
+                export VOLUME=150
+            else
+                export VOLUME=100
+            fi
+            vol $VOLUME
+        }

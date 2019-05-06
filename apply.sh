@@ -1,8 +1,10 @@
+#! /bin/bash
+
 # Just copy everything to $HOME
 echo "Setting up zsh"
 
 # Install configs
-cp -r .aliases .neovimrc .zsh-update .zshrc $HOME
+cp -r .aliases .neovimrc .zshrc $HOME
 echo " • Installing configurations..."
 
 # Clone oh-my-zsh
@@ -14,10 +16,7 @@ then
 fi
 
 echo " • Applying configs to current section..."
-source ~/.{aliases,neovimrc,zsh-update,zshrc}
-
-echo " • Applying zsh to open instead of bash..."
-echo -e "\nzsh; exit" >> ~/.bashrc
+source ~/.{aliases,zshrc}
 
 echo " • Creating local npm folder..."
 make ~/.npm-global
@@ -25,4 +24,6 @@ make ~/.npm-global
 echo " • Install virtualenv as dependencies..."
 sudo pip install virtualenv{,wrapper}
 
-echo " • Done!"
+echo " • Opening new session!"
+zsh; exit
+
