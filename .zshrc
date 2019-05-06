@@ -13,9 +13,9 @@
   # Themes
     ZSH_THEME="random"
     ZSH_THEME_RANDOM_CANDIDATES=(
-      "robbyrussell"
-      "agnoster"
-      "cloud"
+      # "robbyrussell"
+      "af-magic"
+      # "cloud"
     )
     #ZSH_THEME="robbyrussell"
     # ZSH_THEME="avit"
