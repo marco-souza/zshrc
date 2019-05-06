@@ -79,6 +79,7 @@
       git
       docker
       npm
+      ruby
       rake
       python
       zsh-autosuggestions
@@ -186,6 +187,13 @@
     source $VENV_WRAPPER
 
 
+# region: Ruby Setup
+# ===================
+  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
+    source $HOME/.rvm/scripts/rvm
+
+
 # region: Load Files
 # =================
   files=(".aliases" )
@@ -198,7 +206,6 @@
   done
 
 
-# ===================
 # region: config Tilix
 # ===================
   if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
