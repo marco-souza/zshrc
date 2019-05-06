@@ -83,6 +83,21 @@
     alias emulator="$ANDROID_HOME/tools/emulator"
 
 
+# Workspaces
+################
+    # GovPredict
+    function gp() {
+        # use docker machine
+        docker-machine start default
+        eval $(docker-machine env)
+        # use rvm env
+        rvm use 2.4.4@gov_congress
+
+        # go to folder
+        cd ~/dev/govpredict/gov_congress
+    }
+
+
 # Utils
 ################
     # kill
