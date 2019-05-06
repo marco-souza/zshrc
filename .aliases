@@ -101,10 +101,10 @@
         }
 
         export VOLUME=100
-        function v+() {
+        function vu() {
             vol +10
         }
-        function v-() {
+        function vd() {
             vol -10
         }
 
