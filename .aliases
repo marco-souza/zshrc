@@ -6,10 +6,9 @@
 
 # Package Aliases
 #################
-    alias i="brew install"
-    alias ic="brew cask install"
-    alias u="brew upgrade; brew cask upgrade"
-    alias r="brew remove"
+    alias i="yaourt -Sy"
+    alias u="yaourt -Syu"
+    alias r="yaourt -Rsc"
 
 
 # Anaconda Aliases
