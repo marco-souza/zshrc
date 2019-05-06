@@ -1,5 +1,4 @@
-# ======================
-# init: Oh-My-Zsh setup
+# region: Oh-My-Zsh setup
 # ======================
   # a If you come from bash you might have to change your $PATH.
     export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -11,13 +10,18 @@
   # it'll load a random theme each time that oh-my-zsh is loaded.
   # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-  # ZSH_THEME="random"
-  ZSH_THEME="cloud"
-  #ZSH_THEME="robbyrussell"
-  # ZSH_THEME="avit"
-  # ZSH_THEME="pure"
-  # ZSH_THEME="flazz"
-  # ZSH_THEME="agnoster"
+  # Themes
+    ZSH_THEME="random"
+    ZSH_THEME_RANDOM_CANDIDATES=(
+      "robbyrussell"
+      "agnoster"
+      "cloud"
+    )
+    #ZSH_THEME="robbyrussell"
+    # ZSH_THEME="avit"
+    # ZSH_THEME="pure"
+    # ZSH_THEME="flazz"
+    # ZSH_THEME="agnoster"
 
   # Uncomment the following line to use case-sensitive completion.
   # CASE_SENSITIVE="true"
@@ -30,7 +34,7 @@
   # DISABLE_AUTO_UPDATE="true"
 
   # Uncomment the following line to change how often to auto-update (in days).
-  export UPDATE_ZSH_DAYS=7
+    export UPDATE_ZSH_DAYS=7
 
   # Uncomment the following line to disable colors in ls.
   # DISABLE_LS_COLORS="true"
@@ -40,10 +44,10 @@
   # DISABLE_AUTO_TITLE="true"
 
   # Uncomment the following line to enable command auto-correction.
-  ENABLE_CORRECTION="true"
+    ENABLE_CORRECTION="true"
 
   # Uncomment the following line to display red dots whilst waiting for completion.
-  COMPLETION_WAITING_DOTS="true"
+    COMPLETION_WAITING_DOTS="true"
 
   # Uncomment the following line if you want to disable marking untracked files
   # under VCS as dirty. This makes repository status check for large repositories
@@ -53,7 +57,7 @@
   # Uncomment the following line if you want to change the command execution time
   # stamp shown in the history command output.
   # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-  HIST_STAMPS="dd-mm-yyyy"
+    HIST_STAMPS="dd-mm-yyyy"
 
   # Would you like to use another custom folder than $ZSH/custom?
   # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -62,7 +66,23 @@
   # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
   # Example format: plugins=(rails git textmate ruby lighthouse)
   # Add wisely, as too many plugins slow down shell startup.
-  plugins=(git docker npm python)
+
+  #Plugins
+    # Plugin dependencies
+    dest=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    if [ ! -e $dest ]; then
+      git clone https://github.com/zsh-users/zsh-autosuggestions $dest
+    fi
+
+    # Plugin selection
+    plugins=(
+      git
+      docker
+      npm
+      rake
+      python
+      zsh-autosuggestions
+    )
 
   source $ZSH/oh-my-zsh.sh
 
@@ -81,10 +101,10 @@
   # fi
 
   # Compilation flags
-  export ARCHFLAGS="-arch x86_64"
+    export ARCHFLAGS="-arch x86_64"
 
   # ssh
-  export SSH_KEY_PATH="~/.ssh/rsa_id"
+    export SSH_KEY_PATH="~/.ssh/rsa_id"
 
   # Set personal aliases, overriding those provided by oh-my-zsh libs,
   # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -94,104 +114,79 @@
   # Example aliases
   # alias zshconfig="mate ~/.zshrc"
   # alias ohmyzsh="mate ~/.oh-my-zsh"
-# ======================
-# end: Oh-My-Zsh setup
-# ======================
 
 
-# ===================
-# init: System Setup
+# region: System Setup
 # ===================
   ## Set Language environment
-  export LANG=pt_BR.UTF-8
-  export LC_ALL=pt_BR.UTF-8
+    export LANG=pt_BR.UTF-8
+    export LC_ALL=pt_BR.UTF-8
 
   ## Set Vim as default editor
-  export EDITOR='vim'
-  export MANPATH="/usr/local/man:$MANPATH"
-# ===================
-# end: System Setup
-# ===================
+    export EDITOR='vim'
+    export MANPATH="/usr/local/man:$MANPATH"
 
 
+# region: Go Setup
 # ===============
-# init: Go Setup
-# ===============
-  ## GO
   export GOPATH=$HOME/.go
   export PATH=$PATH:/usr/local/opt/go/libexec/bin
-# ===============
-# end: Go Setup
-# ===============
 
 
-# =================
-# init: Java Setup
+# region: Java Setup
 # =================
   ## Java
-  export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/'
+    export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/'
 
   ## Spark
-  SPARK_HOME="/opt/apache-spark"
-  export PATH=$(echo "$PATH:$SPARK_HOME/bin")
+    SPARK_HOME="/opt/apache-spark"
+    export PATH=$(echo "$PATH:$SPARK_HOME/bin")
 
   ## SDKMAN
   #. "$HOME/.sdkman/bin/sdkman-init.sh"
 
   ## Android
-  export ANDROID_HOME="$HOME/.Android/Sdk"
-  # export PATH=$(echo "$PATH:$ANDROID_HOME/tools")
-  export PATH=$(echo "$PATH:$ANDROID_HOME/emulator")
-  export PATH=$(echo "$PATH:$ANDROID_HOME/platform-tools")
-# =================
-# end: Java Setup
-# =================
+    export ANDROID_HOME="$HOME/.Android/Sdk"
+    # export PATH=$(echo "$PATH:$ANDROID_HOME/tools")
+    export PATH=$(echo "$PATH:$ANDROID_HOME/emulator")
+    export PATH=$(echo "$PATH:$ANDROID_HOME/platform-tools")
 
 
-# =================
-# init: Node Setup
+# region: Node Setup
 # =================
   ## NPM
-  npm config set prefix '~/.npm-global'
-  NPM_GLOBAL="${HOME}/.npm-global"
-  PATH="$NPM_GLOBAL/bin:$PATH"
+    npm config set prefix '~/.npm-global'
+    NPM_GLOBAL="${HOME}/.npm-global"
+    PATH="$NPM_GLOBAL/bin:$PATH"
   # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-  unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-  export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+    unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+    export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
   ## NVM
-  export NVM_DIR="$HOME/.nvm"
+    export NVM_DIR="$HOME/.nvm"
 
   ## Yarn
-  export PATH=$(echo "$PATH:$HOME/.config/yarn/global/node_modules/.bin")
-# =================
-# end: Node Setup
-# =================
+    export PATH=$(echo "$PATH:$HOME/.config/yarn/global/node_modules/.bin")
 
 
-# ===================
-# init: Python Setup
+# region: Python Setup
 # ===================
   ## Python paths
-  PYTHON3_PATH="/usr/local/lib/python3.7/site-packages"
-  ENVS="$HOME/.virtualenvs/"
-  PATH="$PATH:$PYTHON3_PATH"
+    PYTHON3_PATH="/usr/local/lib/python3.7/site-packages"
+    ENVS="$HOME/.virtualenvs/"
+    PATH="$PATH:$PYTHON3_PATH"
 
   ## Anaconda
-  export PATH="$PATH:/opt/anaconda/bin"
+    export PATH="$PATH:/opt/anaconda/bin"
 
   ## Virtualenv Wrapper - Setup
-  export VENV_WRAPPER="/usr/local/bin/virtualenvwrapper.sh"
-  export PROJECT_HOME="$HOME/dev"
-  export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
-  source $VENV_WRAPPER
-# ===================
-# end: Python Setup
-# ===================
+    export VENV_WRAPPER="/usr/local/bin/virtualenvwrapper.sh"
+    export PROJECT_HOME="$HOME/dev"
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
+    source $VENV_WRAPPER
 
 
-# =================
-# init: Load Files
+# region: Load Files
 # =================
   files=(".aliases" )
   files_path="$HOME/"
@@ -201,17 +196,11 @@
           source $file_to_load
       fi
   done
-# =================
-# end: Load Files
-# =================
 
 
 # ===================
-# init: config Tilix
+# region: config Tilix
 # ===================
   if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
   fi
-# ===================
-# end: config Tilix
-# ===================
