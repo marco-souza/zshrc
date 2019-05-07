@@ -95,12 +95,12 @@
                 # use rvm env
                 rvm use 2.4.4@gov_congress
 
+                # go to folder
+                cd ~/dev/govpredict/gov_congress
+
                 # startup compose
                 docker-compose up --no-start
                 docker-compose start
-
-                # go to folder
-                cd ~/dev/govpredict/gov_congress
                 ;;
             # TremTec
             tt)
