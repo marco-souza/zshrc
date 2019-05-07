@@ -85,7 +85,7 @@
 
 # Workspaces
 ################
-    function workin() {
+    function wi() {
         case "$1" in
             # GovPredict
             gp)
@@ -95,6 +95,10 @@
                 # use rvm env
                 rvm use 2.4.4@gov_congress
 
+                # startup compose
+                docker-compose up --no-start
+                docker-compose start
+
                 # go to folder
                 cd ~/dev/govpredict/gov_congress
                 ;;
@@ -103,7 +107,18 @@
                 cd ~/dev/tremtec
                 ;;
         esac
+    }
+    function wo() {
+        case "$1" in
+            # GovPredict
+            gp)
+                # stop docker machine
+                docker-machine stop default
 
+                # stop compose
+                docker-compose down
+                ;;
+        esac
     }
 
 
