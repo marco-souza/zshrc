@@ -112,11 +112,11 @@
         case "$1" in
             # GovPredict
             gp)
-                # stop docker machine
-                docker-machine stop default
-
                 # stop compose
                 docker-compose down
+
+                # stop docker machine
+                docker-machine stop default
                 ;;
         esac
     }
