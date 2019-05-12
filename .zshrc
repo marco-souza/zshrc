@@ -156,8 +156,8 @@
 # region: Node Setup
 # =================
   ## NPM
-    npm config set prefix '~/.npm-global'
     NPM_GLOBAL="${HOME}/.npm-global"
+    npm config set prefix $NPM_GLOBAL
     PATH="$NPM_GLOBAL/bin:$PATH"
   # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
     unset MANPATH # delete if you already modified MANPATH elsewhere in your config
