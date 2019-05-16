@@ -77,11 +77,10 @@
     # Plugin selection
     plugins=(
       git
-      docker
       npm
-      ruby
-      rake
+      docker
       python
+      zsh-wakatime
       zsh-autosuggestions
     )
 
