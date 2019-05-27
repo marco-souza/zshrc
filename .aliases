@@ -32,6 +32,10 @@
     alias nr="npm r -g"
     alias nu="npm up -g"
 
+    function talk () {
+        npx create-react-app $1 --scripts-version spectacle-scripts
+    }
+
 
 # Yarn Aliases
 ##############
