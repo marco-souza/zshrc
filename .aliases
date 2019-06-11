@@ -85,6 +85,7 @@
     alias ae="~/Android/Sdk/emulator/emulator @lg-screen -use-system-libs "
     alias ci="code-insiders"
     alias emulator="$ANDROID_HOME/tools/emulator"
+    alias gpg-key="gpg --armor --export 4C6CC824E844391C"
 
 
 # Workspaces
