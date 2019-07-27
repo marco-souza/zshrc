@@ -163,9 +163,6 @@
     unset MANPATH # delete if you already modified MANPATH elsewhere in your config
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
-  ## NVM
-    export NVM_DIR="$HOME/.nvm"
-
   ## Yarn
     export PATH=$(echo "$PATH:$HOME/.config/yarn/global/node_modules/.bin")
 
@@ -177,21 +174,11 @@
     ENVS="$HOME/.virtualenvs/"
     PATH="$PATH:$PYTHON3_PATH"
 
-  ## Anaconda
-    export PATH="$PATH:/opt/anaconda/bin"
-
   ## Virtualenv Wrapper - Setup
-    export VENV_WRAPPER="/usr/local/bin/virtualenvwrapper.sh"
-    export PROJECT_HOME="$HOME/dev"
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
+    export VENV_WRAPPER="/usr/bin/virtualenvwrapper.sh"
+    export PROJECT_HOME="$HOME/dev/repos"
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
     source $VENV_WRAPPER
-
-
-# region: Ruby Setup
-# ===================
-  # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-    export PATH="$PATH:$HOME/.rvm/bin"
-    source $HOME/.rvm/scripts/rvm
 
 
 # region: Load Files
