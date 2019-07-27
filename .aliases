@@ -1,28 +1,16 @@
+
 # CD Aliases
 ############
     alias ..="cd .."
     alias ...="cd ../.."
 
 
+PM='yay'
 # Package Aliases
 #################
-    alias i="yaourt -Sy"
-    alias u="yaourt -Syu"
-    alias r="yaourt -Rsc"
-
-
-# Anaconda Aliases
-##################
-    function conda_on() {
-        conda_env=${1:-workspace}
-        echo "Activating $conda_env..."
-        source /opt/anaconda/bin/activate
-    }
-    function conda_off() {
-        conda_env=${1:-workspace}
-        echo "Deactivating $conda_env..."
-        source /opt/anaconda/bin/deactivate ${1:-workspace}
-    }
+    alias i="$PM -Sy"
+    alias u="$PM -Syu"
+    alias r="$PM -Rsc"
 
 
 # NPM Aliases
