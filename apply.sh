@@ -1,8 +1,11 @@
 #! /bin/bash
 
 # Install configs
-cp -r .aliases .zshrc $HOME
 echo " • Installing configurations..."
+cp -r .aliases .zshrc $HOME
+
+# Install dependencies
+yay -Sy --noconfirm python-pip nodejs npm
 
 # Clone oh-my-zsh
 dest=$HOME/.oh-my-zsh
