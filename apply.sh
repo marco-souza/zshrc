@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Install configs
-cp -r .aliases .neovimrc .zshrc $HOME
+cp -r .aliases .zshrc $HOME
 echo " • Installing configurations..."
 
 # Clone oh-my-zsh
