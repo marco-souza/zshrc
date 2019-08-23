@@ -76,11 +76,10 @@
 
     # Plugin selection
     plugins=(
+      go
       git
       docker
       npm
-      ruby
-      rake
       python
       zsh-autosuggestions
     )
@@ -138,19 +137,6 @@
 # =================
   ## Java
     export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/'
-
-  ## Spark
-    SPARK_HOME="/opt/apache-spark"
-    export PATH=$(echo "$PATH:$SPARK_HOME/bin")
-
-  ## SDKMAN
-  #. "$HOME/.sdkman/bin/sdkman-init.sh"
-
-  ## Android
-    export ANDROID_HOME="$HOME/.Android/Sdk"
-    # export PATH=$(echo "$PATH:$ANDROID_HOME/tools")
-    export PATH=$(echo "$PATH:$ANDROID_HOME/emulator")
-    export PATH=$(echo "$PATH:$ANDROID_HOME/platform-tools")
 
 
 # region: Node Setup
