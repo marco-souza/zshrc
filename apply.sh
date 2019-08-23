@@ -1,8 +1,5 @@
 #! /bin/bash
 
-# Just copy everything to $HOME
-echo "Setting up zsh"
-
 # Install configs
 cp -r .aliases .neovimrc .zshrc $HOME
 echo " • Installing configurations..."
