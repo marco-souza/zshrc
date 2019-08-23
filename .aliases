@@ -9,8 +9,9 @@ PM='yay'
 # Package Aliases
 #################
     alias i="$PM -Sy"
-    alias u="$PM -Syu"
+    alias s="$PM -Ss"
     alias r="$PM -Rsc"
+    alias u="$PM -Syu; $PM -Rns $($PM -Qtdq); npm i -g npm"
 
 
 # NPM Aliases
