@@ -167,7 +167,7 @@
 
   ## Virtualenv Wrapper - Setup
     export VENV_WRAPPER="/usr/bin/virtualenvwrapper.sh"
-    export PROJECT_HOME="$HOME/dev/repos"
+    export PROJECT_HOME="$HOME/dev"
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
     source $VENV_WRAPPER
 
