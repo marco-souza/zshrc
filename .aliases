@@ -11,8 +11,7 @@ PM='yay'
     alias i="$PM -Sy"
     alias s="$PM -Ss"
     alias r="$PM -Rsc"
-    alias u="$PM -Syu; npm i -g npm"
-    alias c="$PM -Rns $($PM -Qtdq);"
+    alias u="$PM -Syu; npm i -g npm; $PM -Rns $($PM -Qtdq);"
 
 
 # NPM Aliases
@@ -39,9 +38,11 @@ PM='yay'
 # Docker Aliases
 ################
     alias dk="docker"
-    alias dkc="docker-compose"
-    alias dkm="docker-machine"
-    alias dks="docker stack"
+    alias dc="docker-compose"
+    alias dm="docker-machine"
+    alias ds="docker stack"
+    alias dsd="docker stack deploy"
+    alias dsd="docker stack remove"
     alias dkps="docker container ps"
     alias ctop="docker rm ctop; docker run --rm -ti \
         --name=ctop \
