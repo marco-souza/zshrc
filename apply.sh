@@ -8,11 +8,19 @@ cp -r .aliases .zshrc $HOME
 yay -Sy --noconfirm python-pip nodejs npm
 
 # Clone oh-my-zsh
-dest=$HOME/.oh-my-zsh
-if [ ! -e $dest ];
+OMZ=$HOME/.oh-my-zsh
+if [ ! -e $OMZ ];
 then
-  echo " • Cloning Oh-My-Zsh in $dest..."
-  git clone https://github.com/robbyrussell/oh-my-zsh.git $dest
+  echo " • Cloning Oh-My-Zsh in $OMZ..."
+  git clone https://github.com/robbyrussell/oh-my-zsh.git $OMZ
+fi
+
+# Creating workspace if not exsits
+WORKSPSACE=$HOME/dev
+if [ ! -e $WORKSPSACE ];
+then
+  echo " • Creating workspsace..."
+  mkdir $WORKSPSACE
 fi
 
 echo " • Applying configs to current section..."
@@ -22,7 +30,7 @@ echo " • Creating local npm folder..."
 make ~/.npm-global
 
 echo " • Install virtualenv as dependencies..."
-sudo pip install virtualenv{,wrapper}
+pip install --user virtualenv{,wrapper}
 
 echo " • Opening new session!"
 zsh; exit
