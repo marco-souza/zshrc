@@ -11,7 +11,7 @@ PM='yay'
     alias i="$PM -Sy"
     alias s="$PM -Ss"
     alias r="$PM -Rsc"
-    alias u="$PM -Syu; npm i -g npm; $PM -Rns \"$($PM -Qtdq)\""
+    alias u="$PM -Syu; npm i -g npm; $PM -Rns $($PM -Qtdq | tr '\n' ' ')"
 
 
 # NPM Aliases
