@@ -109,8 +109,6 @@
   export ENVS=$HOME/.virtualenvs/
   export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
-  # load virtualenvwrapper *-*
-  #VENV_WRAPPER=/usr/bin/virtualenvwrapper.sh
   VENV_WRAPPER=$HOME/.local/bin/virtualenvwrapper.sh
   source $VENV_WRAPPER
 
