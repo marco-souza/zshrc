@@ -13,11 +13,11 @@
         alias r="yay -Rsc"
         alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\n' ' ')"
     # OSx
-        #alias i="brew install"
-        #alias ic="brew cask install"
-        #alias s="brew search"
-        #alias r="brew uninstall"
-        #alias u="brew update && brew tap homebrew/cask && brew upgrade"
+        alias i="brew install"
+        alias ic="brew cask install"
+        alias s="brew search"
+        alias r="brew uninstall"
+        alias u="brew update && brew tap homebrew/cask && brew upgrade"
     # Ubuntu
         #alias i="sudo apt install -y"
         #alias u="sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove"
