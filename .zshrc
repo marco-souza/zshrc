@@ -119,7 +119,7 @@
   export PATH=$PATH:$SNAP_HOME/bin
 
 
-# region: Toolbox Setup
+# region: Toolbox Setup (AMAZON PRIVATE)
 # ===================
   export TOOLBOX_HOME=$HOME/.toolbox
   export PATH=$PATH:$TOOLBOX_HOME/bin
