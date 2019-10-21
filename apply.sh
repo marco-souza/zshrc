@@ -12,6 +12,17 @@ function useDir {
 }
 
 
+function useDir {
+  DIR=$1
+  MSG=${2:-" • Creating $DIR..."}
+  CMD=${3:-"mkdir"}
+
+  if [ ! -e $DIR ]; then
+    echo $MSG
+    $CMD $DIR
+  fi
+}
+
 # Install configs
 echo "$LI Installing configurations..."
 cp -r .aliases .zshrc $HOME
