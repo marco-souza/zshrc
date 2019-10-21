@@ -14,11 +14,11 @@ function useDir {
 
 function useDir {
   DIR=$1
-  MSG=${2:-" • Creating $DIR..."}
+  MSG=${2:-"$LI Creating $DIR..."}
   CMD=${3:-"mkdir"}
 
   if [ ! -e $DIR ]; then
-    echo $MSG
+    echo "$MSG"
     $CMD $DIR
   fi
 }
