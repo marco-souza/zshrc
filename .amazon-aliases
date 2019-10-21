@@ -1,0 +1,4 @@
+# Brazil Aliases
+#################
+    alias bw="brazil workspace"
+    alias bb="brazil-build"

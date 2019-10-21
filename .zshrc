@@ -130,6 +130,7 @@
   # file list
   file_paths=(
     $HOME/.aliases
+    $HOME/.amazon-aliases
   )
   for file_path in ${file_paths[@]}; do
     # source each file, if the path is exists
