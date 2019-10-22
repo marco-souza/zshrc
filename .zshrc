@@ -79,7 +79,7 @@
 # region: Java Setup
 # =================
   ## Java
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home
 
 
 # region: Deno Setup
