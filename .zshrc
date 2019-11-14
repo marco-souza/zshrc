@@ -25,8 +25,6 @@
       # robbyrussell
       # cloud
       # robbyrussell
-      # avit
-      # pure
       # flazz
       # agnoster
     )
