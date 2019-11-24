@@ -7,7 +7,7 @@
 # Setup ZSH
 # ======================
   # a If you come from bash you might have to change your $PATH.
-    export PATH=$HOME/bin:/usr/local/bin:$PATH
+    export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
   # Path to your oh-my-zsh installation.
     export ZSH=$HOME/.oh-my-zsh
@@ -104,7 +104,7 @@
 # ===================
   export PROJECT_HOME=$HOME/dev # user Workspace
   export ENVS=$HOME/.virtualenvs/
-  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3.7
+  export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
   # load virtualenvwrapper *-*
   VENV_WRAPPER=/usr/bin/virtualenvwrapper.sh
