@@ -76,8 +76,8 @@
 
 # region: Go Setup
 # ===============
-  export GO_HOME=$HOME/dev/.go
-  export PATH=$PATH:$GO_HOME/bin:/usr/local/opt/go/libexec/bin
+  export GOPATH=$HOME/go
+  export PATH=$GOPATH/bin:/usr/local/opt/go/libexec/bin:$PATH
 
 
 # region: Java Setup
