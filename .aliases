@@ -5,13 +5,25 @@
     alias ...="cd ../.."
 
 
-PM='yay'
 # Package Aliases
 #################
-    alias i="$PM -Sy"
-    alias s="$PM -Ss"
-    alias r="$PM -Rsc"
-    alias u="$PM -Syu; npm i -g npm; $PM -Rns $($PM -Qtdq | tr '\n' ' ')"
+    # Arch
+    alias i="yay -Sy"
+    alias s="yay -Ss"
+    alias r="yay -Rsc"
+    alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\n' ' ')"
+    # Ubuntu
+    alias i="sudo apt install -y"
+    alias u="sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove"
+    alias s="sudo apt search"
+    alias r="sudo apt purge"
+
+
+# Deno aliases
+#############
+    alias dn="deno"
+    alias dnr="deno run"
+    alias dni="deno install"
 
 
 # NPM Aliases
@@ -33,6 +45,11 @@ PM='yay'
 # Make Aliases
 ##############
     alias mk="make"
+
+
+# Python Aliases
+##############
+    alias pip="pip3"
 
 
 # Docker Aliases
