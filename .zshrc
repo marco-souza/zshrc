@@ -21,7 +21,8 @@
   # Themes
     ZSH_THEME="random"
     ZSH_THEME_RANDOM_CANDIDATES=(
-      af-magic
+      spaceship-prompt
+      # af-magic
       # robbyrussell
       # cloud
       # robbyrussell
@@ -86,6 +87,13 @@
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/
 
 
+# region: Deno Setup
+# =================
+  ## Deno
+    export DENO_INSTALL="$HOME/.deno"
+    export PATH="$DENO_INSTALL/bin:$PATH"
+
+
 # region: Node Setup
 # =================
   ## NPM
@@ -116,6 +124,18 @@
 # ===================
   export SNAP_HOME=/var/lib/snapd/snap
   export PATH=$PATH:$SNAP_HOME/bin
+
+
+# region: Toolbox Setup
+# ===================
+  export TOOLBOX_HOME=$HOME/.toolbox
+  export PATH=$PATH:$TOOLBOX_HOME/bin
+
+
+# region: Toolbox Setup
+# ===================
+  export TOOLBOX_HOME=$HOME/.toolbox
+  export PATH=$PATH:$TOOLBOX_HOME/bin
 
 
 # region: Aliases Setup
