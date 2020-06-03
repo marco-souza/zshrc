@@ -18,12 +18,8 @@ cp -r .aliases .zshrc $HOME
 
 
 # Install dependencies
-apt install git python-pip nodejs npm zsh curl unzip
-# yay -Sy --noconfirm python-pip nodejs npm deno
-
-
-# Install Deno
-curl -fsSL https://deno.land/x/install/install.sh | sh
+#apt install git python-pip nodejs npm zsh curl unzip
+yay -Sy --noconfirm nodejs npm unzip zsh curl
 
 
 # Clone oh-my-zsh
@@ -31,19 +27,9 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh
 useDir $ZSH_CUSTOM "$LI Cloning Oh-My-Zsh in $ZSH_CUSTOM..." 'git clone https://github.com/robbyrussell/oh-my-zsh.git'
 
 
-# Clone spaceship-prompt
-OMZ_THEME=$ZSH_CUSTOM/themes/spaceship-prompt
-useDir $OMZ_THEME "$LI Cloning Oh-My-Zsh in $OMZ_THEME..." 'git clone https://github.com/denysdovhan/spaceship-prompt.git'
-
-
 # Creating workspace if not exsits
 WORKSPSACE=$HOME/dev
 useDir $WORKSPSACE
-
-
-# Clone wakatime
-WAKATIME_PLUGINS=$ZSH_CUSTOM/custom/plugins/zsh-wakatime
-useDir $WAKATIME_PLUGINS "$LI Cloning zsh-wakatime in $WAKATIME_PLUGINS..." 'git clone https://github.com/wbingli/zsh-wakatime.git'
 
 
 echo "$LI Applying configs to current section..."

@@ -8,10 +8,10 @@
 # Package Aliases
 #################
     # Arch
-        #alias i="yay -Sy"
-        #alias s="yay -Ss"
-        #alias r="yay -Rsc"
-        #alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\n' ' ')"
+        alias i="yay -Sy"
+        alias s="yay -Ss"
+        alias r="yay -Rsc"
+        alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\n' ' ')"
     # OSx
         #alias i="brew install"
         #alias ic="brew cask install"

@@ -21,8 +21,7 @@
   # Themes
     ZSH_THEME="random"
     ZSH_THEME_RANDOM_CANDIDATES=(
-      spaceship-prompt
-      # af-magic
+      af-magic
       # robbyrussell
       # cloud
       # robbyrussell
@@ -53,7 +52,7 @@
 
     # select plugins
     plugins=(
-      go
+      golang
       git
       docker
       npm
