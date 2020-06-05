@@ -69,10 +69,6 @@
     export LANG=pt_BR.UTF-8
     export LC_ALL=pt_BR.UTF-8
 
-  ## Set Vim as default editor
-    export EDITOR=vim
-    export MANPATH=/usr/local/man:$MANPATH
-
 
 # region: Go Setup
 # ===============
@@ -123,12 +119,6 @@
 # ===================
   export SNAP_HOME=/var/lib/snapd/snap
   export PATH=$PATH:$SNAP_HOME/bin
-
-
-# region: Toolbox Setup
-# ===================
-  export TOOLBOX_HOME=$HOME/.toolbox
-  export PATH=$PATH:$TOOLBOX_HOME/bin
 
 
 # region: Toolbox Setup
