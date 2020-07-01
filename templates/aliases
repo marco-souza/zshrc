@@ -1,0 +1,100 @@
+
+# CD Aliases
+############
+    alias ..="cd .."
+    alias ...="cd ../.."
+
+
+# Package Aliases
+#################
+    <%- packageManager %>
+
+
+# Deno aliases
+#############
+    alias dn="deno"
+    alias dnr="deno run"
+    alias dni="deno install"
+
+
+# NPM Aliases
+#############
+    alias ni="npm i -g"
+    alias nr="npm r -g"
+    alias nu="npm up -g"
+
+
+# Yarn Aliases
+##############
+    alias js="yarn"
+    alias js0="yarn init"
+    alias jsi="yarn add"
+    alias jsid="yarn add -D"
+    alias jsr="yarn remove"
+
+
+# Make Aliases
+##############
+    alias mk="make"
+
+
+# Python Aliases
+##############
+    alias pip="pip3"
+
+
+# Docker Aliases
+################
+    alias dk="docker"
+    alias dc="docker-compose"
+    alias dm="docker-machine"
+    alias ds="docker stack"
+    alias dsd="docker stack deploy"
+    alias dsd="docker stack remove"
+    alias dkps="docker container ps"
+    alias ctop="docker rm ctop; docker run --rm -ti \\
+        --name=ctop \\
+        -v /var/run/docker.sock:/var/run/docker.sock \\
+        quay.io/vektorlab/ctop:latest"
+
+
+# Others Aliases
+################
+    alias rmf="rm -rf"
+    alias ci="code-insiders"
+    <% if (system === "osx") { %>alias ij="open -a IntelliJ\\ IDEA\\ CE"<% } %>
+
+
+# Utils
+################
+    # kill
+        function tid() {
+            # conda_env=${1:-workspace}
+            ps -ax | grep -i $1 | grep -v 0:00.00 | awk '{ print $1 }' | uniq
+        }
+        function ak() {
+            kill -9 $(tid $1)
+        }
+
+    # volume
+
+        function vol() {
+            pactl -- set-sink-volume 0 $1%
+        }
+
+        export VOLUME=100
+        function vu() {
+            vol +10
+        }
+        function vd() {
+            vol -10
+        }
+
+        function tvol {
+            if [ $VOLUME = 100 ]; then
+                export VOLUME=150
+            else
+                export VOLUME=100
+            fi
+            vol $VOLUME
+        }

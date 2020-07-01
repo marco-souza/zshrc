@@ -1,0 +1,32 @@
+# Brazil Aliases
+#################
+  alias e=emacs
+  alias v=vim
+
+  # Brazil
+  alias b="brazil"
+  alias bb=brazil-build
+  alias bbb='brazil-build build'
+  alias bba='brazil-build apollo-pkg'
+  alias bre='brazil-runtime-exec'
+  alias brc='brazil-recursive-cmd'
+  alias bws='brazil ws'
+  alias bwsuse='bws use --gitMode -p'
+  alias bwscreate='bws create -n'
+  alias brc=brazil-recursive-cmd
+  alias bbr='brc brazil-build'
+  alias bball='brc --allPackages'
+  alias bbb='brc --allPackages brazil-build'
+  alias bbra='bbr apollo-pkg'
+  alias bcc="rm -rf ~/brazil-pkg-cache && brazil-package-cache disable_edge_cache && brazil-package-cache stop && brazil-package-cache enable_edge_cache && brazil-package-cache start"
+
+  # Kerberus
+  alias uk='kinit && mwinit -o'
+  alias expand-mis-hostclass='ssh clouddesk "/apollo/env/envImprovement/bin/expand-hostclass --hosts-only '\\''MIS-RSJ-P-IAD-DEFAULT-F*'\\'' '\\''MIS-RSJ-P-IAD-DEFAULT-1B*'\\'' "'
+  alias csshx=i2cssh
+
+  # SAM
+  alias scrd="bb clean && bb release && ./sam package && ./sam deploy"
+  alias scbd="bb clean && bb build && ./sam package && ./sam deploy"
+  alias sbd="bb build && ./sam package && ./sam deploy"
+  alias srd="bb release && ./sam package && ./sam deploy"
