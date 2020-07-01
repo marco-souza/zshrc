@@ -38,11 +38,6 @@
     alias mk="make"
 
 
-# Python Aliases
-##############
-    alias pip="pip3"
-
-
 # Docker Aliases
 ################
     alias dk="docker"

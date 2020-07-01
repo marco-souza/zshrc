@@ -2,14 +2,17 @@
 
 ## Dependencies
 
-- python + pip
+- python3 + pip
 - node + npm
+- Zsh `>= 5.2`
 - Deno
 
 ## How to use
 
-All configurations are created for `zsh`. Install it first, clone this repo, open this folder in a terminal and execute the following code:
+## How to use
 
-`. ./apply.sh` or `source ./apply.sh`
+Just run
 
-And then execute `zsh` again, if you are not already using it.
+```
+deno run --allow-read --allow-write --allow-env --unstable https://raw.githubusercontent.com/marco-souza/zshrc/fea/zetup/zetup.ts -o out -s arch
+```

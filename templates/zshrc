@@ -8,13 +8,13 @@
 # Setup ZSH
 # ======================
   # a If you come from bash you might have to change your $PATH.
-  export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+  export PATH=$PATH:$HOME/.local/bin:/usr/local/bin
 
   # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
   export ZSH_CUSTOM=$ZSH/custom
   if [ ! -e $ZSH ]; then
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ZSH
+    git clone https://github.com/robbyrussell/oh-my-zsh.git $ZSH
   fi
 
   # Compilation flags
@@ -26,7 +26,11 @@
   # Themes
   ZSH_THEME="random"
   ZSH_THEME_RANDOM_CANDIDATES=(
+    <% if (system === "centos") { %>
+    cloud
+    <% } else { %>
     spaceship-prompt
+    <% } %>
     # cloud
     # af-magic
     # robbyrussell
@@ -69,6 +73,7 @@
       ln -s "$OMZ_THEME/spaceship.zsh-theme" $dest
     fi
 
+     <% if (system !== "centos") { %>
     # download spaceship-prompt theme
     OMZ_THEME=$ZSH_CUSTOM/themes/spaceship-prompt
     dest="$ZSH/themes/spaceship-prompt.zsh-theme"
@@ -83,14 +88,15 @@
       cd ..
       rm -rf fonts
     fi
+    <% } %>
 
     # select plugins
     plugins=(
-      go
       git
       npm
       deno
       docker
+      golang
       python
       zsh-autosuggestions
     )
@@ -109,7 +115,7 @@
 # ===============
   export GO_HOME=$WORKSPACE/go
   export GO_GLOBAL=/usr/local/opt/go/libexec/bin
-  export PATH=$GO_HOME/bin:$GO_GLOBAL:$PATH
+  export PATH=$PATH:$GO_HOME/bin:$GO_GLOBAL:$PATH
   if [ ! -e $GO_HOME ]; then
     mkdir -p $GO_HOME
   fi
@@ -118,7 +124,7 @@
 # Deno Setup
 # =================
   export DENO_HOME="$HOME/.deno"
-  export PATH="$DENO_HOME/bin:$PATH"
+  export PATH=$PATH:$DENO_HOME/bin
   if [ ! -e $DENO_HOME ]; then
     mkdir -p $DENO_HOME
   fi
@@ -149,7 +155,7 @@
     pip install --user virtualenv virtualenvwrapper wakatime
   fi
   export ENVS=$HOME/.virtualenvs/
-  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+  export VIRTUALENVWRAPPER_PYTHON=$(which python)
   VENV_WRAPPER=$(which virtualenvwrapper.sh)
   source $VENV_WRAPPER
 
@@ -197,7 +203,6 @@
       ssh-add ~/.ssh/*_rsa
     else
       echo "Failed to authenticate."
-      exit 1
     fi
   fi
 

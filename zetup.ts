@@ -3,7 +3,7 @@ import { renderFile } from "https://deno.land/x/dejs/mod.ts";
 import { parse } from "https://deno.land/std/flags/mod.ts";
 import { exists } from "https://deno.land/std/fs/mod.ts";
 
-const { cwd, copy, env, args, open, exit, mkdir, dir } = Deno;
+const { cwd, copy, env, args, open, exit, mkdir } = Deno;
 
 enum SystemOptions {
   OSX = "osx",
@@ -21,22 +21,22 @@ const packageManagerAliases = {
     alias u="brew update && brew tap homebrew/cask && brew upgrade"
   `,
   [SystemOptions.ARCH_LINUX]: `
-    #alias i="yay -Sy"
-    #alias s="yay -Ss"
-    #alias r="yay -Rsc"
-    #alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\n' ' ')"
+    alias i="yay -Sy"
+    alias s="yay -Ss"
+    alias r="yay -Rsc"
+    alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\\n' ' ')"
   `,
   [SystemOptions.UBUNTU]: `
-    #alias i="sudo apt install -y"
-    #alias u="sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove"
-    #alias s="sudo apt search"
-    #alias r="sudo apt purge"
+    alias i="sudo apt install -y"
+    alias u="sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove"
+    alias s="sudo apt search"
+    alias r="sudo apt purge"
   `,
   [SystemOptions.CENTOS]: `
-    #alias i="sudo yum install -y"
-    #alias u="sudo yum check-update && sudo yum update && sudo  yum autoremove"
-    #alias s="yum search"
-    #alias r="sudo yum remove"
+    alias i="sudo yum install -y"
+    alias u="sudo yum check-update && sudo yum update && sudo yum clean all"
+    alias s="sudo yum search"
+    alias r="sudo yum remove"
   `,
 };
 
