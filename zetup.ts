@@ -1,11 +1,13 @@
-#! /usr/bin/env deno run --allow-read --allow-write --allow-env
+#! /usr/bin/env deno run --allow-read --allow-write --allow-env --unstable
 import { renderFile } from "https://deno.land/x/dejs/mod.ts";
 import { parse } from "https://deno.land/std/flags/mod.ts";
+import { exists } from "https://deno.land/std/fs/mod.ts";
 
-const { cwd, stdout, copy } = Deno;
+const { cwd, copy, env, args, open, exit, mkdir, dir } = Deno;
 
 enum SystemOptions {
   OSX = "osx",
+  CENTOS = "centos",
   UBUNTU = "ubuntu",
   ARCH_LINUX = "arch",
 }
@@ -30,41 +32,50 @@ const packageManagerAliases = {
     #alias s="sudo apt search"
     #alias r="sudo apt purge"
   `,
+  [SystemOptions.CENTOS]: `
+    #alias i="sudo yum install -y"
+    #alias u="sudo yum check-update && sudo yum update && sudo  yum autoremove"
+    #alias s="yum search"
+    #alias r="sudo yum remove"
+  `,
 };
 
 async function main() {
-  const parsedArgs = parse(Deno.args);
+  const parsedArgs = parse(args);
   const systemArg = parsedArgs.system || parsedArgs.s;
 
   if (!systemArg) {
     console.log("Please, specify a operational system with -s.");
     console.log(`  options: ${Object.keys(packageManagerAliases).join("|")}`);
-    Deno.exit(1);
+    exit(1);
   }
 
   const operationSystem: SystemOptions = systemArg as SystemOptions;
   const packageManager = packageManagerAliases[operationSystem];
 
-  const home = Deno.env.get("HOME");
+  const destFolder = parsedArgs.o || env.get("HOME");
   const currentDir = cwd();
 
+  if (destFolder && !(await exists(destFolder))) {
+    await mkdir(parsedArgs.o);
+  }
+
   const files = [
-    [`${currentDir}/templates/amazon-aliases`, `${home}/.amazon-aliases`],
-    [`${currentDir}/templates/aliases`, `${home}/.aliases`],
-    [`${currentDir}/templates/zshrc`, `${home}/.zshrc`],
+    [`${currentDir}/templates/zshrc`, `${destFolder}/.zshrc`],
+    [`${currentDir}/templates/aliases`, `${destFolder}/.aliases`],
+    [`${currentDir}/templates/amazon-aliases`, `${destFolder}/.amazon-aliases`],
   ];
 
   for (const [source, dest] of files) {
     if (source.includes("amazon") && !parsedArgs.a) continue;
 
-    console.log(source, dest);
     const output = await renderFile(source, {
       packageManager: packageManager,
       system: systemArg,
       amazon: parsedArgs.a,
     });
 
-    const outputFile = await Deno.open(dest, {
+    const outputFile = await open(dest, {
       write: true,
       create: true,
       truncate: true,
