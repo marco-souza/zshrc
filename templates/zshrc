@@ -132,6 +132,7 @@
 
 # Node Setup
 # =================
+  <% if (system !== "centos") { %>
   ## NPM
   export NPM_HOME=$HOME/.npm-global
   export PATH=$PATH:$NPM_HOME/bin
@@ -139,6 +140,13 @@
   if [ ! -e $NPM_HOME ]; then
     mkdir -p $NPM_HOME
   fi
+  <% } else { %>
+  ## nvm
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  nvm use --delete-prefix node
+  <% } %>
 
   ## Yarn
   export YARN_HOME=$HOME/.config/yarn
@@ -147,11 +155,6 @@
     npm i -g yarn
     mkdir -p $YARN_HOME
   fi
-
-  ## nvm
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Python Setup
 # ===================
