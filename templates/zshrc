@@ -121,12 +121,24 @@
   fi
 
 
+# Rust Setup
+# =================
+  export RUST_HOME="$HOME/.cargo"
+  export PATH=$PATH:$RUST_HOME/bin
+  if [ ! -x "$(command -v cargo)" ] || [ ! -x "$(command -v rustc)" ]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  fi
+
+
 # Deno Setup
 # =================
   export DENO_HOME="$HOME/.deno"
   export PATH=$PATH:$DENO_HOME/bin
   if [ ! -e $DENO_HOME ]; then
     mkdir -p $DENO_HOME
+  fi
+  if [ ! -x "$(command -v deno)" ]; then
+    cargo install deno
   fi
 
 
@@ -162,7 +174,7 @@
     pip install --user virtualenv virtualenvwrapper wakatime
   fi
   export ENVS=$HOME/.virtualenvs/
-  export VIRTUALENVWRAPPER_PYTHON=$(which python)
+  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   VENV_WRAPPER=$(which virtualenvwrapper.sh)
   source $VENV_WRAPPER
 
@@ -204,12 +216,15 @@
 #Update Midway key
   SSH_CERT=~/.ssh/id_rsa-cert.pub
   if (! test -f "$SSH_CERT") || (test "`find ~/.ssh/id_rsa-cert.pub -mmin +1220`"); then
-    echo "Midway expired"
-    if mwinit; then
-      ssh-add -D ~/.ssh/*_rsa
-      ssh-add ~/.ssh/*_rsa
-    else
-      echo "Failed to authenticate."
+    echo "Midway expired. Update? [y/N]"
+    read UPDATE_CONFIRMATION
+    if [ $UPDATE_CONFIRMATION ] && [ "$UPDATE_CONFIRMATION" = "y" ]; then
+      if mwinit; then
+        ssh-add -D ~/.ssh/*_rsa
+        ssh-add ~/.ssh/*_rsa
+      else
+        echo "Failed to authenticate."
+      fi
     fi
   fi
 
