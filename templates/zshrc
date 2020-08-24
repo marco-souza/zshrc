@@ -186,6 +186,14 @@
   export PATH=$PATH:$SNAP_HOME/bin
 <% } %>
 
+# Java Setup
+# ===================
+export JAVA_HOME=$HOME/.sdkman/candidates/java/current
+[[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
+if [ ! -e $HOME/.sdkman ]; then
+  curl -s "https://get.sdkman.io" | bash
+  [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
+fi
 
 # Aliases Setup
 # =================
