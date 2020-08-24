@@ -94,7 +94,6 @@
     plugins=(
       git
       npm
-      deno
       docker
       golang
       python
