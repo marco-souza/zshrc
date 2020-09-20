@@ -21,7 +21,7 @@ const packageManagerAliases = {
     alias u="brew update && brew tap homebrew/cask && brew upgrade"
   `,
   [SystemOptions.ARCH_LINUX]: `
-    alias i="yay -Sy --no-confirm"
+    alias i="yay -Sy --noconfirm"
     alias s="yay -Ss"
     alias r="yay -Rsc"
     alias u="yay -Syu; npm i -g npm; yay -Rns $(yay -Qtdq | tr '\\n' ' ')"
