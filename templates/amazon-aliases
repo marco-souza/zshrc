@@ -30,3 +30,6 @@
   alias scbd="bb clean && bb build && ./sam package && ./sam deploy"
   alias sbd="bb build && ./sam package && ./sam deploy"
   alias srd="bb release && ./sam package && ./sam deploy"
+
+  # SAM
+  alias odin="ssh -f -N -L 2009:localhost:2009 clouddesk"

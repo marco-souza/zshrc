@@ -221,7 +221,16 @@ fi
   export PATH=$PATH:$TOOLBOX_HOME/bin
   export BUILDER_TOOLBOX_USAGE_METRICS=0
 
-#Update Midway key
+# setup odin
+  if [ ! -e $HOME/workplace/odin-tools ]; then
+    cd ~/workplace
+    brazil ws create --name .odin-tools --vs live
+    cd ~/workplace/.odin-tools
+    brazil-bootstrap -p OdinRetrievalScript-1.0
+  fi
+  export PATH=$PATH:$HOME/workplace/.odin-tools/env/OdinRetrievalScript-1.0/runtime/bin
+
+# Update Midway key
   SSH_CERT=~/.ssh/id_rsa-cert.pub
   if (! test -f "$SSH_CERT") || (test "`find ~/.ssh/id_rsa-cert.pub -mmin +1220`"); then
     echo "Midway expired. Update? [y/N]"
