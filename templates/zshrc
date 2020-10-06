@@ -112,11 +112,11 @@
 
 # Go Setup
 # ===============
-  export GO_HOME=$WORKSPACE/go
+  export GOPATH=$WORKSPACE/go
   export GO_GLOBAL=/usr/local/opt/go/libexec/bin
-  export PATH=$PATH:$GO_HOME/bin:$GO_GLOBAL:$PATH
-  if [ ! -e $GO_HOME ]; then
-    mkdir -p $GO_HOME
+  export PATH=$PATH:$GOPATH/bin:$GO_GLOBAL:$PATH
+  if [ ! -e $GOPATH ]; then
+    mkdir -p $GOPATH
   fi
 
 
