@@ -53,11 +53,18 @@
         quay.io/vektorlab/ctop:latest"
 
 
+
+# Text Editors
+################
+    alias ee="emacs -nw"
+    alias ev="nvim"
+    alias ec="code-insiders"
+    <% if (system === "osx") { %>alias ei="open -a IntelliJ\\ IDEA\\ CE"<% } %>
+
+
 # Others Aliases
 ################
     alias rmf="rm -rf"
-    alias ci="code-insiders"
-    <% if (system === "osx") { %>alias ij="open -a IntelliJ\\ IDEA\\ CE"<% } %>
 
 
 # Utils
