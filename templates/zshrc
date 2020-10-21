@@ -222,7 +222,7 @@ fi
   export BUILDER_TOOLBOX_USAGE_METRICS=0
 
 # setup odin
-  if [ ! -e $HOME/workplace/odin-tools ]; then
+  if [ ! -e $HOME/workplace/.odin-tools ]; then
     cd ~/workplace
     brazil ws create --name .odin-tools --vs live
     cd ~/workplace/.odin-tools
