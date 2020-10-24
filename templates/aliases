@@ -65,6 +65,7 @@
 # Others Aliases
 ################
     alias rmf="rm -rf"
+    mdc() { mkdir $1; cd $1; }
 
 
 # Utils
