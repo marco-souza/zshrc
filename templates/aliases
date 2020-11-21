@@ -56,16 +56,19 @@
 
 # Text Editors
 ################
-    alias ee="emacs -nw"
     alias ev="nvim"
     alias ec="code-insiders"
+    alias ee="emacs"
+    alias eet="emacs -nw"
+    alias ees="emacs --daemon"
+    alias eec="emacsclient -t"
     <% if (system === "osx") { %>alias ei="open -a IntelliJ\\ IDEA\\ CE"<% } %>
 
 
 # Others Aliases
 ################
     alias rmf="rm -rf"
-    mdc() { mkdir $1; cd $1; }
+    mcd() { mkdir $1; cd $1; }
 
 
 # Utils
