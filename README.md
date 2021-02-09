@@ -1,13 +1,18 @@
 # My default i3 config
 
+This repo generates and setup my default alias for `zsh`:
+
+- Arch Linux
+- Ubuntu
+- OSX
+
 ## Dependencies
 
 - python3 + pip
 - node + npm
 - zsh `>= 5.2`
-- Deno
 
-## How to use
+## Usage
 
 Just run
 
