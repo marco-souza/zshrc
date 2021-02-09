@@ -15,7 +15,7 @@ enum SystemOptions {
 const packageManagerAliases = {
   [SystemOptions.OSX]: `
     alias i="brew install"
-    alias ic="brew cask install"
+    alias ic="brew install --cask "
     alias s="brew search"
     alias r="brew uninstall"
     alias u="brew update && brew tap homebrew/cask && brew upgrade"
