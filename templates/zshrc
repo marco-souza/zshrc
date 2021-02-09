@@ -1,6 +1,6 @@
 # set environment vars
 # ======================
-  BROWSER='/usr/bin/google-chrome-stable'
+  export BROWSER='/usr/bin/google-chrome-stable'
   export WORKSPACE=$HOME/dev # user Workspace
   export EDITOR=vim
 

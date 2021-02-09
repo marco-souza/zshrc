@@ -43,8 +43,8 @@ async function main() {
     exit(1);
   }
 
-  const operationSystem: OS = systemArg as OS;
-  const packageManager = packageManagerAliases[operationSystem];
+  const system: OS = systemArg as OS;
+  const packageManager = packageManagerAliases[system];
 
   const destFolder = parsedArgs.o || env.get("HOME");
   const currentDir = cwd();
@@ -60,8 +60,8 @@ async function main() {
 
   for (const [source, dest] of files) {
     const output = await renderFile(source, {
-      packageManager: packageManager,
-      system: systemArg,
+      system,
+      packageManager,
       supportSnap: [OS.ARCH_LINUX, OS.UBUNTU].includes(systemArg),
     });
 

@@ -52,7 +52,6 @@
         quay.io/vektorlab/ctop:latest"
 
 
-
 # Text Editors
 ################
     alias ev="nvim"
