@@ -26,11 +26,7 @@
   # Themes
   ZSH_THEME="random"
   ZSH_THEME_RANDOM_CANDIDATES=(
-    <% if (system === "centos") { %>
-    cloud
-    <% } else { %>
     spaceship-prompt
-    <% } %>
     # cloud
     # af-magic
     # robbyrussell
@@ -73,7 +69,6 @@
       ln -s "$OMZ_THEME/spaceship.zsh-theme" $dest
     fi
 
-     <% if (system !== "centos") { %>
     # download spaceship-prompt theme
     OMZ_THEME=$ZSH_CUSTOM/themes/spaceship-prompt
     dest="$ZSH/themes/spaceship-prompt.zsh-theme"
@@ -88,7 +83,6 @@
       cd ..
       rm -rf fonts
     fi
-    <% } %>
 
     # select plugins
     plugins=(
@@ -143,7 +137,6 @@
 
 # Node Setup
 # =================
-  <% if (system !== "centos") { %>
   ## NPM
   export NPM_HOME=$HOME/.npm-global
   export PATH=$PATH:$NPM_HOME/bin
@@ -151,13 +144,6 @@
   if [ ! -e $NPM_HOME ]; then
     mkdir -p $NPM_HOME
   fi
-  <% } else { %>
-  ## nvm
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  nvm use --delete-prefix node
-  <% } %>
 
   ## Yarn
   export YARN_HOME=$HOME/.config/yarn
@@ -173,12 +159,15 @@
     pip install --user virtualenv virtualenvwrapper wakatime
   fi
   export ENVS=$HOME/.virtualenvs/
+  if [ ! -e $ENVS ]; then
+    mkdir -p $YARN_HOME
+  fi
   export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   VENV_WRAPPER=$(which virtualenvwrapper.sh)
   source $VENV_WRAPPER
 
 
-<% if (["arch", "ubuntu"].includes(system)) { %>
+<% if (supportSnap) { %>
 # Snap Setup
 # ===================
   export SNAP_HOME=/var/lib/snapd/snap
@@ -199,7 +188,6 @@ fi
 # =================
   file_paths=(
     $HOME/.aliases
-    <% if (amazon) { %>$HOME/.amazon-aliases<% } %>
   )
   for file_path in ${file_paths[@]}; do
     if [ -f $file_path ]; then
@@ -213,35 +201,3 @@ fi
   if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
   fi
-
-<% if (amazon) { %>
-# Toolbox Setup (AMAZON PRIVATE)
-# ===================
-  export TOOLBOX_HOME=$HOME/.toolbox
-  export PATH=$PATH:$TOOLBOX_HOME/bin
-  export BUILDER_TOOLBOX_USAGE_METRICS=0
-
-# setup odin
-  if [ ! -e $HOME/workplace/.odin-tools ]; then
-    cd ~/workplace
-    brazil ws create --name .odin-tools --vs live
-    cd ~/workplace/.odin-tools
-    brazil-bootstrap -p OdinRetrievalScript-1.0
-  fi
-  export PATH=$PATH:$HOME/workplace/.odin-tools/env/OdinRetrievalScript-1.0/runtime/bin
-
-# Update Midway key
-  SSH_CERT=~/.ssh/id_rsa-cert.pub
-  if (! test -f "$SSH_CERT") || (test "`find ~/.ssh/id_rsa-cert.pub -mmin +1220`"); then
-    echo "Midway expired. Update? [y/N]"
-    read UPDATE_CONFIRMATION
-    if [ $UPDATE_CONFIRMATION ] && [ "$UPDATE_CONFIRMATION" = "y" ]; then
-      if mwinit; then
-        ssh-add -D ~/.ssh/*_rsa
-        ssh-add ~/.ssh/*_rsa
-      else
-        echo "Failed to authenticate."
-      fi
-    fi
-  fi
-<% } %>

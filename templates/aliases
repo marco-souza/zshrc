@@ -1,4 +1,3 @@
-
 # CD Aliases
 ############
     alias ..="cd .."
@@ -62,20 +61,19 @@
     alias eet="emacs -nw"
     alias ees="emacs --daemon"
     alias eec="emacsclient -t"
-    <% if (system === "osx") { %>alias ei="open -a IntelliJ\\ IDEA\\ CE"<% } %>
 
 
 # Others Aliases
 ################
     alias rmf="rm -rf"
     mcd() { mkdir $1; cd $1; }
+    runa() { $HOME/Library/Android/sdk/emulator/emulator -avd $1 }
 
 
 # Utils
 ################
     # kill
         function tid() {
-            # conda_env=${1:-workspace}
             ps -ax | grep -i $1 | grep -v 0:00.00 | awk '{ print $1 }' | uniq
         }
         function ak() {
