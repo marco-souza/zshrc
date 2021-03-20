@@ -1,4 +1,4 @@
-# My default i3 config
+# My default zsh config
 
 This repo generates and setup my default alias for `zsh`:
 
