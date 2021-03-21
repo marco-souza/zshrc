@@ -23,7 +23,7 @@ const packageManagerAliases = {
     alias i="yay -Sy --noconfirm"
     alias s="yay -Ss"
     alias r="yay -Rsc"
-    alias u="yay -Syu; npm up -g npm; deno upgrade"
+    alias u="yay -Syu; npm up -g npm; sudo deno upgrade"
   `,
   [OS.UBUNTU]: `
     alias i="sudo apt install -y"
