@@ -62,14 +62,6 @@
     fi
 
     # download spaceship-prompt theme
-    OMZ_THEME=$ZSH/custom/themes/spaceship-prompt
-    dest="$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-    if [ ! -e $OMZ_THEME ]; then
-      git clone https://github.com/denysdovhan/spaceship-prompt.git $OMZ_THEME
-      ln -s "$OMZ_THEME/spaceship.zsh-theme" $dest
-    fi
-
-    # download spaceship-prompt theme
     OMZ_THEME=$ZSH_CUSTOM/themes/spaceship-prompt
     dest="$ZSH/themes/spaceship-prompt.zsh-theme"
     if [ ! -e $dest ]; then
@@ -84,6 +76,12 @@
       rm -rf fonts
     fi
 
+    # download kube-aliases
+    KUBE_ALIASES_PLUGINS=$ZSH_PLUGINS_HOME/kube-aliases
+    if [ ! -e $KUBE_ALIASES_PLUGINS ]; then
+      git clone git@github.com:Dbz/kube-aliases.git $KUBE_ALIASES_PLUGINS
+    fi
+
     # select plugins
     plugins=(
       git
@@ -91,6 +89,7 @@
       docker
       golang
       python
+      kube-aliases
       zsh-autosuggestions
     )
 
