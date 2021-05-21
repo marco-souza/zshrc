@@ -52,6 +52,13 @@
         quay.io/vektorlab/ctop:latest"
 
 
+# K8s Aliases
+#############
+    alias k="kubectl"
+    alias kg="kubectl get"
+    alias ka="kubectl apply -f"
+    alias kd="kubectl delete -f"
+
 # Text Editors
 ################
     alias ev="nvim"
