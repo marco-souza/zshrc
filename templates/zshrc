@@ -87,6 +87,8 @@
       git
       npm
       docker
+      ansible
+      kubectl
       golang
       python
       kube-aliases
