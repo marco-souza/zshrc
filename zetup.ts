@@ -53,6 +53,7 @@ async function main() {
     await mkdir(parsedArgs.o);
   }
 
+  const supportJava = parsedArgs.java;
   const files = [
     [`${currentDir}/templates/zshrc`, `${destFolder}/.zshrc`],
     [`${currentDir}/templates/aliases`, `${destFolder}/.aliases`],
@@ -62,6 +63,7 @@ async function main() {
     const output = await renderFile(source, {
       system,
       packageManager,
+      supportJava,
       supportSnap: [OS.ARCH_LINUX, OS.UBUNTU].includes(systemArg),
     });
 

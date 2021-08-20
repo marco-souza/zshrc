@@ -76,12 +76,6 @@
       rm -rf fonts
     fi
 
-    # download kube-aliases
-    KUBE_ALIASES_PLUGINS=$ZSH_PLUGINS_HOME/kube-aliases
-    if [ ! -e $KUBE_ALIASES_PLUGINS ]; then
-      git clone git@github.com:Dbz/kube-aliases.git $KUBE_ALIASES_PLUGINS
-    fi
-
     # select plugins
     plugins=(
       git
@@ -91,7 +85,6 @@
       kubectl
       golang
       python
-      kube-aliases
       zsh-autosuggestions
     )
 
@@ -110,6 +103,9 @@
   export GOPATH=$WORKSPACE/go
   export GO_GLOBAL=/usr/local/opt/go/libexec/bin
   export PATH=$PATH:$GOPATH/bin:$GO_GLOBAL:$PATH
+  if [ ! -x "$(command -v go)" ] ]; then
+    wget -c https://golang.org/dl/go1.17.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+  fi
   if [ ! -e $GOPATH ]; then
     mkdir -p $GOPATH
   fi
@@ -175,6 +171,8 @@
   export PATH=$PATH:$SNAP_HOME/bin
 <% } %>
 
+<% if (supportJava) { %>
+
 # Java Setup
 # ===================
 export JAVA_HOME=$HOME/.sdkman/candidates/java/current
@@ -184,6 +182,7 @@ if [ ! -e $HOME/.sdkman ]; then
   curl -s "https://get.sdkman.io" | bash
   [[ -s $HOME/.sdkman/bin/sdkman-init.sh ]] && source $HOME/.sdkman/bin/sdkman-init.sh
 fi
+<% } %>
 
 # Aliases Setup
 # =================
