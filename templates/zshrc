@@ -103,7 +103,7 @@
   export GOPATH=$WORKSPACE/go
   export GO_GLOBAL=/usr/local/opt/go/libexec/bin
   export PATH=$PATH:$GOPATH/bin:$GO_GLOBAL:$PATH
-  if [ ! -x "$(command -v go)" ] ]; then
+  if [ ! -x "$(command -v go)" ]; then
     wget -c https://golang.org/dl/go1.17.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
   fi
   if [ ! -e $GOPATH ]; then
