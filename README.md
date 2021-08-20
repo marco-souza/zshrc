@@ -29,3 +29,5 @@ deno install --allow-read --allow-write --allow-env --unstable https://raw.githu
 # run
 zetup -o out -s arch
 ```
+
+**Note**: Generated files are in `zshrc/` folder.
