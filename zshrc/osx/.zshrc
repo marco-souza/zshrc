@@ -152,11 +152,11 @@
 
 # Python Setup
 # ===================
-  if [ ! -x "$(command -v pip)" ] ]; then
-    if [ -x "$(command -v pip3)" ] ]; then
+  if [ ! -x "$(command -v pip)" ]; then
+    if [ -x "$(command -v pip3)" ]; then
       alias pip=pip3
     elif;
-      if [ -x "$(command -v python3)" ] ]; then
+      if [ -x "$(command -v python3)" ]; then
         python3 <(curl -s  https://bootstrap.pypa.io/get-pip.py)
         alias pip=pip3
       elif;
