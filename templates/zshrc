@@ -177,6 +177,18 @@
   source $VENV_WRAPPER
 
 
+# Emacs Doom Setup
+# =================
+  export EMACS_HOME="$HOME/.emacs.d/"
+  export PATH=$PATH:$EMACS_HOME/bin
+  if [ ! -e $EMACS_HOME ]; then
+    source <(curl -s https://raw.githubusercontent.com/marco-souza/doom.d/main/setup.sh)
+  fi
+  if [ ! -x "$(command -v emacs)" ]; then
+    cargo install deno
+  fi
+
+
 <% if (supportSnap) { %>
 # Snap Setup
 # ===================
