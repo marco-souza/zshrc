@@ -69,6 +69,11 @@
     alias eec="emacsclient -t"
 
 
+# Tmux Editors
+################
+    alias ta="tmux attach-session -t"
+    alias tl="tmux list-session"
+
 # Others Aliases
 ################
     alias rmf="rm -rf"
