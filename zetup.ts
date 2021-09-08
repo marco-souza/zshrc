@@ -57,6 +57,7 @@ async function main() {
   const files = [
     [`${currentDir}/templates/zshrc`, `${destFolder}/.zshrc`],
     [`${currentDir}/templates/aliases`, `${destFolder}/.aliases`],
+    [`${currentDir}/templates/paradigm.aliases`, `${destFolder}/.paradigm.aliases`],
   ];
 
   for (const [source, dest] of files) {
@@ -64,6 +65,7 @@ async function main() {
       system,
       packageManager,
       supportJava,
+      paradigmAliases: parsedArgs.p,
       supportSnap: [OS.ARCH_LINUX, OS.UBUNTU].includes(systemArg),
     });
 

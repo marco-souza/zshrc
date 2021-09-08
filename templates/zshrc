@@ -213,6 +213,7 @@ fi
 # =================
   file_paths=(
     $HOME/.aliases
+    <% if (paradigmAliases) { %> $HOME/.paradigm.aliases <% } %>
   )
   for file_path in ${file_paths[@]}; do
     if [ -f $file_path ]; then

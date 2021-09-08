@@ -202,6 +202,7 @@
 # =================
   file_paths=(
     $HOME/.aliases
+    
   )
   for file_path in ${file_paths[@]}; do
     if [ -f $file_path ]; then

@@ -1,0 +1,64 @@
+# Use docker-compose file
+alias doc="docker-compose -f infra/docker/docker-compose.yaml"
+
+# Use docker-compose files for test mode
+alias doctest='doc -f infra/docker/docker-compose.tests.yaml'
+
+# Bring-up docker-compose
+alias docu="doc up -d"
+
+# Kill and remove all in docker-compose
+alias docd="doc down"
+
+# Follow logs
+alias docl="doc logs -f"
+
+# Bring-up docker-compose and follow logs
+alias docul="doc up -d && doc logs -f"
+
+# Restart docker-compose and follow logs
+alias docrs="doc down && docul"
+
+alias docutil="doc -f infra/docker/docker-compose.utils.yaml"
+
+# Shortcut to execute commands on containers
+# By default opens a bash shell inside of it; e.g. docex papi-rest
+docex() {
+    if [ $# -lt 2 ]; then
+      doc exec "$1" bash
+    else
+      doc exec $@;
+    fi
+}
+
+# Shortcut to execute super linter with regex to filter directories or files
+# E.g. docLinter '.*internal/serializers.py'
+function docLinter(){
+    regex_include="${1:-.*}"
+    echo "regex_include: $regex_include"
+    docker run --rm -e RUN_LOCAL=true \
+    -e FILTER_REGEX_INCLUDE="$regex_include" \
+    -v `pwd`:/tmp/lint github/super-linter
+}
+
+# Run a debug command to use django operations
+alias docdebug="doc --profile debug up -d debugger && docex debugger"
+
+# Restart a constainer's services
+docsr() {
+    docex $1 supervisorctl restart all
+}
+
+# Restart all container services
+sall() {
+    docsr rest &&
+    docsr worker &&
+    docsr celery-beat &&
+    docsr celery-worker &&
+    docsr proxy
+}
+
+# Restart celery worker
+sc() {
+    docsr celery-worker
+}
