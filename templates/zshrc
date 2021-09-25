@@ -170,7 +170,7 @@
   fi
   export ENVS=$HOME/.virtualenvs/
   if [ ! -e $ENVS ]; then
-    mkdir -p $YARN_HOME
+    mkdir -p $ENVS
   fi
   export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   VENV_WRAPPER=$(which virtualenvwrapper.sh)
@@ -184,9 +184,11 @@
   if [ ! -e $EMACS_HOME ]; then
     source <(curl -s https://raw.githubusercontent.com/marco-souza/doom.d/main/setup.sh)
   fi
-  if [ ! -x "$(command -v emacs)" ]; then
-    cargo install deno
-  fi
+
+
+# Proton setup + protontricks
+# ===================
+  export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.local/share/Steam"
 
 
 <% if (supportSnap) { %>
