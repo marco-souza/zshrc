@@ -24,7 +24,7 @@ async function main() {
 
   const supportJava = parsedArgs.java;
   const files = [
-    [`${currentDir}/templates/profile`, `${destFolder}/.profile`],
+    [`${currentDir}/templates/zprofile`, `${destFolder}/.zprofile`],
     [`${currentDir}/templates/zshrc`, `${destFolder}/.zshrc`],
     [`${currentDir}/templates/aliases`, `${destFolder}/.aliases`],
     [`${currentDir}/templates/paradigm.aliases`, `${destFolder}/.paradigm.aliases`],
