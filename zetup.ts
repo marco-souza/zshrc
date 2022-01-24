@@ -1,37 +1,6 @@
 #! /usr/bin/env deno run --allow-read --allow-write --allow-env --unstable
-import { renderFile } from "https://deno.land/x/dejs/mod.ts";
-import { parse } from "https://deno.land/std/flags/mod.ts";
-import { exists } from "https://deno.land/std/fs/mod.ts";
-
-const { cwd, copy, env, args, open, exit, mkdir } = Deno;
-
-enum OS {
-  OSX = "osx",
-  UBUNTU = "ubuntu",
-  ARCH_LINUX = "arch",
-}
-
-const packageManagerAliases = {
-  [OS.OSX]: `
-    alias i="brew install"
-    alias ic="brew install --cask "
-    alias s="brew search"
-    alias r="brew uninstall"
-    alias u="brew update && brew tap homebrew/cask && brew upgrade"
-  `,
-  [OS.ARCH_LINUX]: `
-    alias i="yay -Sy --noconfirm"
-    alias s="yay -Ss"
-    alias r="yay -Rsc"
-    alias u="yay -Syu; npm up -g npm; sudo deno upgrade"
-  `,
-  [OS.UBUNTU]: `
-    alias i="sudo apt install -y"
-    alias u="sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove"
-    alias s="sudo apt search"
-    alias r="sudo apt purge"
-  `,
-};
+import { parse, args, copy, cwd, env, exists, exit, mkdir, open, renderFile } from "./deps.ts";
+import { PACKAGE_MANAGER_ALIASES, OS } from "./settings.ts";
 
 async function main() {
   const parsedArgs = parse(args);
@@ -39,12 +8,12 @@ async function main() {
 
   if (!systemArg) {
     console.log("Please, specify a operational system with -s.");
-    console.log(`  options: ${Object.keys(packageManagerAliases).join("|")}`);
+    console.log(`  options: ${Object.keys(PACKAGE_MANAGER_ALIASES).join("|")}`);
     exit(1);
   }
 
-  const system: OS = systemArg as OS;
-  const packageManager = packageManagerAliases[system];
+  const system: OS = systemArg;
+  const packageManager = PACKAGE_MANAGER_ALIASES[system];
 
   const destFolder = parsedArgs.o || env.get("HOME");
   const currentDir = cwd();
@@ -55,18 +24,24 @@ async function main() {
 
   const supportJava = parsedArgs.java;
   const files = [
+    [`${currentDir}/templates/profile`, `${destFolder}/.profile`],
     [`${currentDir}/templates/zshrc`, `${destFolder}/.zshrc`],
     [`${currentDir}/templates/aliases`, `${destFolder}/.aliases`],
     [`${currentDir}/templates/paradigm.aliases`, `${destFolder}/.paradigm.aliases`],
   ];
+
+  const osWithSnapSupport: OS[] = ["arch", "ubuntu"];
+  const supportSnap = osWithSnapSupport.includes(systemArg);
+
+  const paradigmAliases = parsedArgs.p;
 
   for (const [source, dest] of files) {
     const output = await renderFile(source, {
       system,
       packageManager,
       supportJava,
-      paradigmAliases: parsedArgs.p,
-      supportSnap: [OS.ARCH_LINUX, OS.UBUNTU].includes(systemArg),
+      supportSnap,
+      paradigmAliases,
     });
 
     const outputFile = await open(dest, {
