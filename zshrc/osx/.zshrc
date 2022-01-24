@@ -90,57 +90,14 @@
 
 # Python Setup
 # ===================
-  # pip/pip3
-  if [ ! -x "$(command -v pip)" ]; then
-    if [ -x "$(command -v pip3)" ]; then
-      alias pip=pip3
-    else;
-      if [ -x "$(command -v python3)" ]; then
-        python3 <(curl -s  https://bootstrap.pypa.io/get-pip.py)
-        alias pip=pip3
-      else;
-        python <(curl -s  https://bootstrap.pypa.io/pip/2.7/get-pip.py)
-      fi
-    fi
-  fi
-
-  # virtualenv
-  if [ ! -x "$(command -v virtualenvwrapper.sh)" ] || [ ! -x "$(command -v wakatime)" ]; then
-    pip install --user virtualenv virtualenvwrapper wakatime
-  fi
-  export ENVS=$HOME/.virtualenvs/
-  if [ ! -e $ENVS ]; then
-    mkdir -p $ENVS
-  fi
-  export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   VENV_WRAPPER=$(which virtualenvwrapper.sh)
   source $VENV_WRAPPER
 
-  # pyenv
-  if [ -x "$(command -v pyenv)" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-  else;
-    echo "Please install pyenv"
-  fi
-
-
 # Emacs Doom Setup
 # =================
-  export EMACS_HOME="$HOME/.emacs.d/"
-  export PATH=$PATH:$EMACS_HOME/bin
   if [ ! -e $EMACS_HOME ]; then
     source <(curl -s https://raw.githubusercontent.com/marco-souza/doom.d/main/setup.sh)
   fi
-
-
-# Proton setup + protontricks
-# ===================
-  export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.local/share/Steam"
-
-
-
 
 
 
