@@ -83,6 +83,8 @@
 
 # Python Setup
 # ===================
+
+  # pip/pip3
   if [ ! -x "$(command -v pip)" ]; then
     if [ -x "$(command -v pip3)" ]; then
       alias pip=pip3
@@ -96,6 +98,7 @@
     fi
   fi
 
+  # virtualenv
   if [ ! -x "$(command -v virtualenvwrapper.sh)" ] || [ ! -x "$(command -v wakatime)" ]; then
     pip install --user virtualenv virtualenvwrapper wakatime
   fi
@@ -106,6 +109,16 @@
   export VIRTUALENVWRAPPER_PYTHON=$(which python3)
   VENV_WRAPPER=$(which virtualenvwrapper.sh)
   source $VENV_WRAPPER
+
+  # pyenv
+  if [ ! -x "$(command -v pyenv)" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+  else;
+    echo "Please install pyenv"
+  fi
+
 
 
 # Emacs Doom Setup
@@ -122,11 +135,6 @@
   export STEAM_COMPAT_CLIENT_INSTALL_PATH="$HOME/.local/share/Steam"
 
 
-
-# Snap Setup
-# ===================
-  export SNAP_HOME=/var/lib/snapd/snap
-  export PATH=$PATH:$SNAP_HOME/bin
 
 
 
