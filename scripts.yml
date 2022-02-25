@@ -1,0 +1,7 @@
+unstable: true
+allow:
+  - all
+
+scripts:
+  mac:
+    cmd: deno run mod.ts -s osx
