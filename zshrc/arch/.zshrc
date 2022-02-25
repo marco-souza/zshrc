@@ -14,19 +14,18 @@
   export SSH_KEY_PATH="~/.ssh/rsa_id"
 
   # Themes
-  ZSH_THEME="random"
-  ZSH_THEME_RANDOM_CANDIDATES=(
-    spaceship-prompt
+  ZSH_THEME="cloud"
+  # ZSH_THEME_RANDOM_CANDIDATES=(
     # cloud
     # af-magic
     # robbyrussell
     # robbyrussell
     # flazz
     # agnoster
-  )
+  # )
 
   # Uncomment the following line to change how often to auto-update (in days).
-  export UPDATE_ZSH_DAYS=7
+  export UPDATE_ZSH_DAYS=3
 
   # Uncomment the following line to enable command auto-correction.
   ENABLE_CORRECTION="true"
@@ -49,21 +48,6 @@
     WAKATIME_PLUGINS=$ZSH_PLUGINS_HOME/zsh-wakatime
     if [ ! -e $WAKATIME_PLUGINS ]; then
       git clone https://github.com/wbingli/zsh-wakatime.git $WAKATIME_PLUGINS
-    fi
-
-    # download spaceship-prompt theme
-    OMZ_THEME=$ZSH_CUSTOM/themes/spaceship-prompt
-    dest="$ZSH/themes/spaceship-prompt.zsh-theme"
-    if [ ! -e $dest ]; then
-      git clone https://github.com/denysdovhan/spaceship-prompt.git $OMZ_THEME
-      ln -s "$OMZ_THEME/spaceship.zsh-theme" $dest
-
-      # Install Powerline fonts
-      git clone https://github.com/powerline/fonts.git --depth=1
-      cd fonts
-      ./install.sh
-      cd ..
-      rm -rf fonts
     fi
 
     # select plugins
